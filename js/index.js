@@ -37,23 +37,23 @@ createApp({
       }
     );
 
-    // 取出 Token
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
-      '$1'
-    );
-    if (token === '') {
-      // promise 先跳出提示視窗，按確定後才跳轉回登入頁
-      swal('出錯了!', '您尚未登入請重新登入。', 'error')
-        .then(() => {
-          window.location = 'login.html';
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    axios.defaults.headers.common['Authorization'] = token;
-    this.getData();
+    // // 取出 Token
+    // const token = document.cookie.replace(
+    //   /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
+    //   '$1'
+    // );
+    // if (token === '') {
+    //   // promise 先跳出提示視窗，按確定後才跳轉回登入頁
+    //   swal('出錯了!', '您尚未登入請重新登入。', 'error')
+    //     .then(() => {
+    //       window.location = 'login.html';
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // }
+    // axios.defaults.headers.common['Authorization'] = token;
+    // this.getData();
   },
   methods: {
     // 函式的集合
@@ -142,5 +142,22 @@ createApp({
   },
   created() {
     // 元件生成，必定會執行的項目
+    // 取出 Token
+    const token = document.cookie.replace(
+      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
+      '$1'
+    );
+    if (token === '') {
+      // promise 先跳出提示視窗，按確定後才跳轉回登入頁
+      swal('出錯了!', '您尚未登入請重新登入。', 'error')
+        .then(() => {
+          window.location = 'login.html';
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    axios.defaults.headers.common['Authorization'] = token;
+    this.getData();
   },
 }).mount('#app');
